@@ -56,8 +56,11 @@ for i in range(len_args - 1):
     recursive_search(args[i + 1])
 
 len_depends_nest_list = len(depends_nest_list)
+print("apt install -y", end=" ")
 for i in range(len(depends_nest_list)):
-    print(i)
     for tmp in depends_nest_list[i]:
-        print(tmp, end=" ")
+        if i == 0:
+            print(tmp, end=" ")
+        else:
+            print("apt-src --build  install " + tmp)
     print("\n")
